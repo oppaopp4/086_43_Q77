@@ -1,0 +1,52 @@
+.damage_motion {
+    animation: damage 0.1s 3;
+}
+@keyframes damage {
+    25% {
+        transform: translate(5px, 5px);
+    }
+    50% {
+        transform: translate(-5px, -5px);
+    }
+    75% {
+        transform: translate(5px, -5px);
+    }
+    100% {
+        transform: translate(-5px, 5px);
+    }
+}
+
+#monsters {
+    height: 255px;
+}
+
+img {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(10, 4, 49);
+    cursor: pointer;
+}
+
+#content {
+    text-align: center;
+}
+
+#commentbox {
+    width: 1000px;
+    height: 240px;
+    background-color: #eee;
+    margin: auto;
+    margin-top: 50px;
+    border: solid 3px #6089e7;
+    border-radius: 10px;
+    text-align: left;
+}
+
+#comment {
+    font-size: 24px;
+    margin: 12px 20px;
+}
+
+.nodisp{
+    display: none;
+}
