@@ -40,3 +40,23 @@ class Monster{
         console.log(this.name + ":" + this.hp);
     }
 }
+
+// Encounter();
+
+let enemies =[
+    {name: "スライム", hp: 10},
+    {name: "こうもり", hp: 20},
+    {name: "魔法使い", hp: 30},
+    {name: "ゴーレム", hp: 40},
+    {name: "ドラゴン", hp: 50},
+    {name: "魔王", hp: 60},
+];
+let enemy = new Monster(enemies[0].name, enemies[0].hp);
+// let enemy = "";
+// function Encounter() {
+//     let ninzuu = Math.floor(Math.random() * 5) + 1;
+//     for (let i = 0; i < ninzuu; i++) {
+//         let n = Math.floor(Math.random() * 5);
+//         enemy = new Monster(enemies[n].name, enemies[n].hp)[i];
+//     }
+}
