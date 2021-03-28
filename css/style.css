@@ -1,5 +1,5 @@
 .damage_motion {
-    animation: damage 0.1s 3;
+    animation: damage 0.2s 3;
 }
 @keyframes damage {
     25% {
@@ -13,6 +13,24 @@
     }
     100% {
         transform: translate(-5px, 5px);
+    }
+}
+
+.kaisin_motion {
+    animation: damage 0.1s 3;
+}
+@keyframes damage {
+    25% {
+        transform: translate(15px, 15px);
+    }
+    50% {
+        transform: translate(-15px, -15px);
+    }
+    75% {
+        transform: translate(15px, -15px);
+    }
+    100% {
+        transform: translate(-15px, 15px);
     }
 }
 

@@ -1,5 +1,5 @@
-class Monster{
-    constructor(name, hp){
+class Monster {
+    constructor(name, hp) {
         this.name = name;
         this.hp = hp;
 
@@ -9,7 +9,7 @@ class Monster{
         this.Init();
     }
 
-    Init(){
+    Init() {
         let comment = document.getElementById('comment');
 
         let monsters = document.getElementById('monsters');
@@ -25,38 +25,35 @@ class Monster{
 
         this.ref.addEventListener('animationend', () => {
             this.ref.classList.remove("damage_motion");
-            if(!this.alive){
+            this.ref.classList.remove("kaisin_motion");
+
+            if (!this.alive) {
                 this.ref.classList.add("nodisp");
                 comment.innerHTML += this.name + "をやっつけた！";
+                console.log(monsters);
+                // if () {
+                //     comment.innerHTML += "戦いに勝利した！";
+                // }
             }
         });
     }
 
-    damage(damage){
+    damage(damage) {
+        comment.innerHTML = "";
+
+        let r = Math.floor(Math.random() * 4);
+        if (r == 0) {
+            comment.innerHTML += "会心の一撃！！</br>";
+            damage *= 10;
+            this.ref.classList.add("kaisin_motion");
+        } else {
+            this.ref.classList.add("damage_motion");
+        }
+
         this.hp -= damage;
-        if(this.hp <= 0) this.alive = false;
-        comment.innerHTML = this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！<br>";
+        if (this.hp <= 0) this.alive = false;
+        comment.innerHTML += this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！<br>";
 
         console.log(this.name + ":" + this.hp);
     }
-}
-
-// Encounter();
-
-let enemies =[
-    {name: "スライム", hp: 10},
-    {name: "こうもり", hp: 20},
-    {name: "魔法使い", hp: 30},
-    {name: "ゴーレム", hp: 40},
-    {name: "ドラゴン", hp: 50},
-    {name: "魔王", hp: 60},
-];
-let enemy = new Monster(enemies[0].name, enemies[0].hp);
-// let enemy = "";
-// function Encounter() {
-//     let ninzuu = Math.floor(Math.random() * 5) + 1;
-//     for (let i = 0; i < ninzuu; i++) {
-//         let n = Math.floor(Math.random() * 5);
-//         enemy = new Monster(enemies[n].name, enemies[n].hp)[i];
-//     }
 }
