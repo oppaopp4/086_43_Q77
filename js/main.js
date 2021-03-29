@@ -17,7 +17,7 @@ function Encounter() {
   ];
   let enemy_list = [];
   let ninzuu = Math.floor(Math.random() * 6) + 1;
-  console.log(ninzuu);
+  // console.log(ninzuu);
 
   // if (cb.checked) ninzuu = 6; // チェックボックスがチェックの時、強制魔王戦
 
@@ -31,6 +31,7 @@ function Encounter() {
       comment.innerHTML += enemy_list[i].name + "が現れた！</br>";
     }
   }
+  // console.log(enemy_list.length);
   return enemy_list;
 }
 

@@ -15,6 +15,7 @@ class Monster {
         let monsters = document.getElementById('monsters');
         this.ref = document.createElement('img');
         this.ref.src = "img/" + this.name + ".png";
+        this.ref.classList.add("renda");// 連打クラスを付ける
         monsters.appendChild(this.ref);
 
         this.ref.addEventListener('click', () => {
@@ -27,10 +28,18 @@ class Monster {
             this.ref.classList.remove("damage_motion");
             this.ref.classList.remove("kaisin_motion");
 
+            let sitai = document.getElementsByClassName('nodisp');
+            let renda = document.getElementsByClassName('renda');
+
             if (!this.alive) {
                 this.ref.classList.add("nodisp");
-                comment.innerHTML += this.name + "をやっつけた！";
-                console.log(monsters);
+                comment.innerHTML += this.name + "をやっつけた！</br>";
+                // 勝利時コメントを追加
+                if (renda.length === sitai.length) {
+                    comment.innerHTML += "戦闘に勝利した！！";
+                }
+                // console.log(sitai.length);
+                // console.log(renda.length);
                 // if () {
                 //     comment.innerHTML += "戦いに勝利した！";
                 // }
