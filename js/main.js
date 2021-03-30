@@ -19,11 +19,11 @@ function Encounter() {
   let ninzuu = Math.floor(Math.random() * 6) + 1;
   // console.log(ninzuu);
 
-  // if (cb.checked) ninzuu = 6; // チェックボックスがチェックの時、強制魔王戦
+  // ninzuu = 6; // 魔王戦強制フラグ
 
   if (ninzuu === 6) {
     enemy_list = LastBattle();
-    comment.innerHTML = "魔王戦！</br></br>" + "絶対に負けられない戦いです！</br>";
+    comment.innerHTML = "魔王戦！</br>" + "絶対に負けられない戦いです！</br>";
   } else {
     for (let i = 0; i < ninzuu; i++) {
       let n = Math.floor(Math.random() * enemies.length);
