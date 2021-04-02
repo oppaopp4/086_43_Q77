@@ -50,8 +50,20 @@ class Monster {
                 if (renda.length === sitai.length) {
                     comment.innerHTML += "戦闘に勝利した！";
                     if (maou.length === 1) {
+                        const monsters = document.getElementById('monsters');
+                        const syouri = document.createElement('img');
+                        syouri.src = "img/エンディング.png";
+                        syouri.className = "syouri";
+                        monsters.appendChild(syouri);
+                        
                         comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
                     } else {
+                        const monsters = document.getElementById('monsters');
+                        const syouri = document.createElement('img');
+                        syouri.src = "img/ダンジョン.png";
+                        syouri.className = "syouri";
+                        monsters.appendChild(syouri);
+
                         comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
                     }
                 }

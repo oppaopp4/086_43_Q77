@@ -1,12 +1,20 @@
-Encounter();
-// let cb = document.getElementById('cb'); // チェックボックス
+// Encounter();
+const cb = document.getElementById('cb'); // チェックボックス
 
-let btn = document.getElementById('btn');
+const btn = document.getElementById('btn');
 btn.addEventListener('click', saiyomikomi);
+const btn2 = document.getElementById('btn2');
+btn2.addEventListener('click', Encounter);
 
 
 // let enemy = new Monster(enemies[0].name, enemies[0].hp);
 function Encounter() {
+
+  const parent = document.getElementById('monsters');
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  };
+
   let enemies = [
     { name: "スライム", hp: 10 },
     { name: "こうもり", hp: 20 },
@@ -18,13 +26,14 @@ function Encounter() {
   let enemy_list = [];
   let ninzuu = Math.floor(Math.random() * 6) + 1;
   // console.log(ninzuu);
-
+  if (cb.checked) ninzuu = 6;
   // ninzuu = 6; // 魔王戦強制フラグ
 
   if (ninzuu === 6) {
     enemy_list = LastBattle();
     comment.innerHTML = "魔王戦！</br>" + "絶対に負けられない戦いです！</br>";
   } else {
+    comment.innerHTML = "";
     for (let i = 0; i < ninzuu; i++) {
       let n = Math.floor(Math.random() * enemies.length);
       enemy_list.push(new Monster(enemies[n].name, enemies[n].hp));
@@ -43,7 +52,7 @@ function LastBattle() {
     { name: "ドラゴン", hp: 50 },
     { name: "ゴーレム", hp: 40 },
   ];
-  
+
   let enemy = [];
 
   last_enemy_list.forEach(e => {
