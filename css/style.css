@@ -34,6 +34,24 @@
     }
 }
 
+.mukou_motion {
+    animation: damage 0.5s 3;
+}
+@keyframes damage {
+    25% {
+        transform: translate(5px, 5px);
+    }
+    50% {
+        transform: translate(-5px, -5px);
+    }
+    75% {
+        transform: translate(5px, -5px);
+    }
+    100% {
+        transform: translate(-5px, 5px);
+    }
+}
+
 #monsters {
     height: 255px;
 }

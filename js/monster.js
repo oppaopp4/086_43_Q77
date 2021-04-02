@@ -41,6 +41,7 @@ class Monster {
         this.ref.addEventListener('animationend', () => {
             this.ref.classList.remove("damage_motion");
             this.ref.classList.remove("kaisin_motion");
+            this.ref.classList.remove("mukou_motion");// 無効モーション追加
 
             if (!this.alive) {
                 this.ref.classList.add("nodisp");
@@ -63,8 +64,12 @@ class Monster {
     damage(damage) {
         comment.innerHTML = "";
 
+        let sitai = document.getElementsByClassName('nodisp');// 死体クラス追加
+
         let r = Math.floor(Math.random() * 4);
-        if (r == 0) {
+        if (this.name === '魔王' && sitai.length !== 4) { // 魔王無効時
+            this.ref.classList.add("mukou_motion");
+        } else if (r == 0) {
             comment.innerHTML += "会心の一撃！！</br>";
             damage *= 10;
             this.ref.classList.add("kaisin_motion");
