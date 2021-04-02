@@ -9,6 +9,8 @@ btn2.addEventListener('click', Encounter);
 
 // let enemy = new Monster(enemies[0].name, enemies[0].hp);
 function Encounter() {
+  const setumei = document.getElementById('setumei');
+  setumei.remove();
 
   const parent = document.getElementById('monsters');
   while (parent.firstChild) {

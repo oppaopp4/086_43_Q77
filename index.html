@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,26 @@
     <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
+
 <body>
     <h1>086_43</h1>
     <h2>[Q77]</h2>
-    <div><input type="checkbox" id="cb">強制フラグ(魔王戦)</div>
-    <input type="button" id="btn" value="再読み込みボタン"/>
-    <div>画像クリックで戦闘開始→</div>
+    <input type="button" id="btn" class="seiton" value="再読み込みボタン" />
+    <div id="setumei">
+        <div class="seiton">画像クリックで戦闘開始→</div>
+        <label class="seiton">
+            <input type="checkbox" id="cb">強制フラグ(魔王戦)
+        </label>
+        <img src="img/エンディング.jpg" class="junbi">
+        <img src="img/こうもり.jpg" class="junbi">
+        <img src="img/ゴーレム.jpg" class="junbi">
+        <img src="img/スライム.jpg" class="junbi">
+        <img src="img/ダンジョン.jpg" class="junbi">
+        <img src="img/ダンジョン2.jpg" class="junbi">
+        <img src="img/ドラゴン.jpg" class="junbi">
+        <img src="img/魔王.jpg" class="junbi">
+        <img src="img/魔法使い.jpg" class="junbi">
+    </div>
     <div id="content">
         <div id="monsters">
             <img id="btn2" src="img/ダンジョン2.jpg" class="dungeon">
@@ -23,8 +38,9 @@
             </div>
         </div>
     </div>
-    
+
     <script src="js/monster.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

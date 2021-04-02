@@ -55,7 +55,7 @@ class Monster {
                         syouri.src = "img/エンディング.png";
                         syouri.className = "syouri";
                         monsters.appendChild(syouri);
-                        
+
                         comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
                     } else {
                         const monsters = document.getElementById('monsters');
