@@ -15,9 +15,14 @@
     <input type="button" id="btn" class="seiton" value="再読み込みボタン" />
     <div id="setumei">
         <div class="seiton">画像クリックで戦闘開始→</div>
-        <label class="seiton">
+        <!-- <label class="seiton">
             <input type="checkbox" id="cb">強制フラグ(魔王戦)
-        </label>
+        </label> -->
+        <form id="target">
+            <label><input name="hoge" type="radio" value="a" checked> ランダム</label>
+            <label><input name="hoge" type="radio" value="b"> 雑魚戦</label>
+            <label><input name="hoge" type="radio" value="c"> 魔王戦</label>
+        </form>
         <img src="img/エンディング.png" class="nodisp">
         <img src="img/こうもり.png" class="nodisp">
         <img src="img/ゴーレム.png" class="nodisp">
