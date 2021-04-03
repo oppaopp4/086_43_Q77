@@ -52,9 +52,12 @@ class Monster {
                     if (maou.length === 1) {
                         const monsters = document.getElementById('monsters');
                         const end = document.createElement('img');
+                        end.id = "end1";
                         end.src = "img/エンディング.png";
                         end.className = "end";
                         monsters.appendChild(end);
+                        fadeIn(end, 1500);
+                        // fadeOut(end);
 
                         comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
                     } else {

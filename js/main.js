@@ -88,3 +88,35 @@ function Encounter(x) {
   }
   return enemy_list;
 }
+
+function fadeIn(id, time) {
+  id.animate(
+    // キーフレーム
+    [
+      { opacity: 0 },     // 最初の状態 (非表示)
+      { opacity: 1 }      // 最後の状態（表示）
+    ],
+    // 1500   // 2000ミリ秒の長さでアニメーションを実行
+    // オプション
+    {
+      duration: time,      // アニメが終了するまでの時間(ミリ秒)
+      fill: 'forwards'    // アニメ完了後に最初の状態に戻さない
+    }
+  );
+}
+
+function fadeOut(id, time) {
+  id.animate(
+    // キーフレーム
+    [
+      { opacity: 1 },    // 最後の状態（表示）
+      { opacity: 0 }     // 最初の状態 (非表示)
+    ],
+    // 1500   // 2000ミリ秒の長さでアニメーションを実行
+    // オプション
+    {
+      duration: time,      // アニメが終了するまでの時間(ミリ秒)
+      fill: 'forwards'    // アニメ完了後に最初の状態に戻さない
+    }
+  );
+}
