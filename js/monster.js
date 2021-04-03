@@ -50,31 +50,9 @@ class Monster {
                 if (renda.length === sitai.length) {
                     comment.innerHTML += "戦闘に勝利した！";
                     if (maou.length === 1) {
-                        const monsters = document.getElementById('monsters');
-                        const end = document.createElement('img');
-                        end.id = "end1";
-                        end.src = "img/エンディング.png";
-                        end.className = "end";
-                        monsters.appendChild(end);
-                        fadeIn(end, 1500);
-                        // fadeOut(end);
-
-                        comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
+                        Ending();
                     } else {
-                        ClearMons();
-                        const syouri = document.createElement('img');
-                        syouri.src = "img/ダンジョン.png";
-                        syouri.className = "syouri";
-                        syouri.classList.add("mukou_motion");
-                        setTimeout(function () {
-                            // ～何かの処理～
-                            syouri.classList.remove("mukou_motion");
-                        }, 1500);
-
-                        monsters.appendChild(syouri);
-                        comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
-
-                        syouri.addEventListener('click', Rensen);
+                        BattleEnd();
                     }
                 }
                 // console.log(sitai.length);

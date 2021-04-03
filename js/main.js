@@ -89,8 +89,8 @@ function Encounter(x) {
   return enemy_list;
 }
 
-function fadeIn(id, time) {
-  id.animate(
+function fadeIn(className, time) {
+  className.animate(
     // キーフレーム
     [
       { opacity: 0 },     // 最初の状態 (非表示)
@@ -100,13 +100,13 @@ function fadeIn(id, time) {
     // オプション
     {
       duration: time,      // アニメが終了するまでの時間(ミリ秒)
-      fill: 'forwards'    // アニメ完了後に最初の状態に戻さない
+      fill: 'forwards',    // アニメ完了後に最初の状態に戻さない
     }
   );
 }
 
-function fadeOut(id, time) {
-  id.animate(
+function fadeOut(className, time) {
+  className.animate(
     // キーフレーム
     [
       { opacity: 1 },    // 最後の状態（表示）
@@ -119,4 +119,35 @@ function fadeOut(id, time) {
       fill: 'forwards'    // アニメ完了後に最初の状態に戻さない
     }
   );
+}
+
+function BattleEnd() {
+  ClearMons();
+  let monsters = document.getElementById('monsters');
+  let syouri = document.createElement('img');
+  syouri.src = "img/ダンジョン.png";
+  syouri.className = "syouri";
+  monsters.appendChild(syouri);
+  fadeIn(syouri, 1500);
+  setTimeout(function () {
+      // ～何かの処理～
+      syouri.addEventListener('click', Rensen);
+  }, 1500);
+
+  comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
+}
+
+function Ending() {
+  const monsters = document.getElementById('monsters');
+  const end = document.createElement('img');
+  // end.id = "end1";
+  end.src = "img/エンディング.png";
+  end.className = "end";
+  monsters.appendChild(end);
+  fadeIn(end, 1500);
+  setTimeout(function () {
+      // ～何かの処理～
+      fadeOut(end, 5000);
+  }, 1500);
+  comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
 }
