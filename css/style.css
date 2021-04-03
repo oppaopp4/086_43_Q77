@@ -1,5 +1,6 @@
 .damage_motion {
     animation: damage 0.2s 3;
+    pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
     25% {
@@ -18,6 +19,7 @@
 
 .kaisin_motion {
     animation: damage 0.1s 3;
+    pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
     25% {
