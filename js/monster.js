@@ -1,5 +1,5 @@
-class Monster{
-    constructor(name, hp){
+class Monster {
+    constructor(name, hp) {
         this.name = name;
         this.hp = hp;
 
@@ -9,33 +9,77 @@ class Monster{
         this.Init();
     }
 
-    Init(){
+    Init() {
         let comment = document.getElementById('comment');
 
         let monsters = document.getElementById('monsters');
+
+        let sitai = document.getElementsByClassName('nodisp');
+        let renda = document.getElementsByClassName('renda');
+        let maou = document.getElementsByClassName('maou');
+
         this.ref = document.createElement('img');
         this.ref.src = "img/" + this.name + ".png";
+        this.ref.classList.add("renda");// 連打クラスを付ける
+        if (this.name === '魔王') {
+            this.ref.classList.add("maou");// 魔王クラスを付ける
+        }
         monsters.appendChild(this.ref);
 
         this.ref.addEventListener('click', () => {
-            this.ref.classList.add("damage_motion");
-            this.damage_point = Math.floor(Math.random() * 5) + 1;
-            this.damage(this.damage_point);
+            // 魔王戦のダメージ調整
+            if (this.name === '魔王' && sitai.length !== 4) {
+                this.damage(this.damage_point * 0);
+                comment.innerHTML = "取り巻きに攻撃を阻まれた！</br>全然効いてない！";
+            } else {
+                this.ref.classList.add("damage_motion");
+                this.damage_point = Math.floor(Math.random() * 5) + 1;
+                this.damage(this.damage_point);
+            }
         });
 
         this.ref.addEventListener('animationend', () => {
             this.ref.classList.remove("damage_motion");
-            if(!this.alive){
+            this.ref.classList.remove("kaisin_motion");
+            this.ref.classList.remove("mukou_motion");// 無効モーション追加
+
+            if (!this.alive) {
                 this.ref.classList.add("nodisp");
-                comment.innerHTML += this.name + "をやっつけた！";
+                comment.innerHTML += this.name + "をやっつけた！</br>";
+                // 勝利時コメントを追加
+                if (renda.length === sitai.length) {
+                    comment.innerHTML += "戦闘に勝利した！";
+                    if (maou.length === 1) {
+                        Ending();
+                    } else {
+                        BattleEnd();
+                    }
+                }
+                // console.log(sitai.length);
+                // console.log(renda.length);
             }
         });
     }
 
-    damage(damage){
+    damage(damage) {
+        comment.innerHTML = "";
+
+        let sitai = document.getElementsByClassName('nodisp');// 死体クラス追加
+
+        let r = Math.floor(Math.random() * 2);
+        if (this.name === '魔王' && sitai.length !== 4) { // 魔王無効時
+            this.ref.classList.add("mukou_motion");
+        } else if (r == 0) {
+            comment.innerHTML += "会心の一撃！！</br>";
+            damage *= 10;
+            this.ref.classList.add("kaisin_motion");
+        } else {
+            this.ref.classList.add("damage_motion");
+        }
+
         this.hp -= damage;
-        if(this.hp <= 0) this.alive = false;
-        comment.innerHTML = this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！<br>";
+        if (this.hp <= 0) this.alive = false;
+        comment.innerHTML += this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！<br>";
 
         console.log(this.name + ":" + this.hp);
     }

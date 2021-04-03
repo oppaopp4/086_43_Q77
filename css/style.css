@@ -1,5 +1,44 @@
 .damage_motion {
+    animation: damage 0.2s 3;
+    pointer-events: none; /* クリック無効を追加 */
+}
+@keyframes damage {
+    25% {
+        transform: translate(5px, 5px);
+    }
+    50% {
+        transform: translate(-5px, -5px);
+    }
+    75% {
+        transform: translate(5px, -5px);
+    }
+    100% {
+        transform: translate(-5px, 5px);
+    }
+}
+
+.kaisin_motion {
     animation: damage 0.1s 3;
+    pointer-events: none; /* クリック無効を追加 */
+}
+@keyframes damage {
+    25% {
+        transform: translate(15px, 15px);
+    }
+    50% {
+        transform: translate(-15px, -15px);
+    }
+    75% {
+        transform: translate(15px, -15px);
+    }
+    100% {
+        transform: translate(-15px, 15px);
+    }
+}
+
+.mukou_motion {
+    animation: damage 0.5s 3;
+    pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
     25% {
@@ -20,11 +59,49 @@
     height: 255px;
 }
 
-img {
+/* img {
     width: 250px;
     height: 250px;
     background-color: rgb(10, 4, 49);
     cursor: pointer;
+} */
+
+
+.dungeon {
+    width: 500px;
+    height: 300px;
+    background-color: rgb(10, 4, 49);
+    /* margin-bottom: 48px; */
+    cursor: pointer;
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
+.syouri {
+    width: 500px;
+    height: 300px;
+    background-color: rgb(10, 4, 49);
+    cursor: pointer;
+    /* margin-bottom: 48px; */
+    
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
+.end {
+    width: 500px;
+    height: 300px;
+    background-color: rgb(10, 4, 49);
+    /* margin-bottom: 48px; */
+    
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
 }
 
 #content {
@@ -42,6 +119,15 @@ img {
     text-align: left;
 }
 
+.seiton {
+    margin: 8px 4px;
+
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
 #comment {
     font-size: 24px;
     margin: 12px 20px;
@@ -49,4 +135,29 @@ img {
 
 .nodisp{
     display: none;
+}
+
+.renda {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(10, 4, 49);
+    cursor: pointer;
+
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
+.junbi {
+    width: 1px;
+    height: 1px;
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
+#btn3 {
+    cursor: pointer;
 }
