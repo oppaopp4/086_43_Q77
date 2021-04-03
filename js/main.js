@@ -1,38 +1,78 @@
-// Encounter();
-const cb = document.getElementById('cb'); // チェックボックス
-
 const btn = document.getElementById('btn');
 btn.addEventListener('click', saiyomikomi);
 const btn2 = document.getElementById('btn2');
-btn2.addEventListener('click', Encounter);
+btn2.addEventListener('click', FirstBattle);
+
+const enemies = [
+  { name: "スライム", hp: 10 },
+  { name: "こうもり", hp: 20 },
+  { name: "魔法使い", hp: 30 },
+  { name: "ゴーレム", hp: 40 },
+  { name: "ドラゴン", hp: 50 },
+];
 
 
-// let enemy = new Monster(enemies[0].name, enemies[0].hp);
-function Encounter() {
-  let enemies = [
-    { name: "スライム", hp: 10 },
-    { name: "こうもり", hp: 20 },
+function FirstBattle() {
+  let nyuuryokuti = GetRedio();
+
+  ClearSetu();
+  ClearMons();
+  Encounter(nyuuryokuti);
+}
+
+function LastBattle() {
+  let last_enemy_list = [
     { name: "魔法使い", hp: 30 },
-    { name: "ゴーレム", hp: 40 },
     { name: "ドラゴン", hp: 50 },
-    // {name: "魔王", hp: 60},
+    { name: "魔王", hp: 100 },
+    { name: "ドラゴン", hp: 50 },
+    { name: "ゴーレム", hp: 40 },
   ];
 
-  // ラジオボタン
+  let enemy = [];
+  last_enemy_list.forEach(e => {
+    enemy.push(new Monster(e.name, e.hp));
+  });
+
+  return enemy;
+}
+
+function saiyomikomi() {
+  window.location.reload();
+}
+
+
+function GetRedio() { // ラジオボタン
   let target = document.getElementById("target");
-  let nyuuryokuti = target.hoge.value;
-  if (nyuuryokuti === 'a') ninzuu = Math.floor(Math.random() * 6) + 1;
-  if (nyuuryokuti === 'b') ninzuu = Math.floor(Math.random() * 5) + 1;
-  if (nyuuryokuti === 'c') ninzuu = 6;
-  // ninzuu = 6; // 魔王戦強制フラグ
+  let s = target.hoge.value
+  console.log(s);
+  return s;
+}
 
-  const setumei = document.getElementById('setumei');
-  setumei.remove();
+function Rensen() {
+  ClearMons();
+  Encounter('a');
+}
 
-  const parent = document.getElementById('monsters');
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
+function ClearMons() {
+  const monsters = document.getElementById('monsters');
+  while (monsters.firstChild) {
+    monsters.removeChild(monsters.firstChild);
   };
+}
+
+function ClearSetu() {
+  let setumei = document.getElementById('setumei');
+  setumei.remove();
+}
+
+function Encounter(x) {
+  // console.log(x);
+  let ninzuu = 0;
+  if (x === 'a') ninzuu = Math.floor(Math.random() * 6) + 1;
+  if (x === 'b') ninzuu = Math.floor(Math.random() * 5) + 1;
+  if (x === 'c') ninzuu = 6;
+  // ninzuu = 6; // 魔王戦強制フラグ
 
   let enemy_list = [];
   if (ninzuu === 6) {
@@ -46,28 +86,5 @@ function Encounter() {
       comment.innerHTML += enemy_list[i].name + "が現れた！</br>";
     }
   }
-  // console.log(nyuuryokuti);
   return enemy_list;
-}
-
-function LastBattle() {
-  let last_enemy_list = [
-    { name: "魔法使い", hp: 30 },
-    { name: "ドラゴン", hp: 50 },
-    { name: "魔王", hp: 100 },
-    { name: "ドラゴン", hp: 50 },
-    { name: "ゴーレム", hp: 40 },
-  ];
-
-  let enemy = [];
-
-  last_enemy_list.forEach(e => {
-    enemy.push(new Monster(e.name, e.hp));
-  });
-
-  return enemy;
-}
-
-function saiyomikomi() {
-  window.location.reload();
 }

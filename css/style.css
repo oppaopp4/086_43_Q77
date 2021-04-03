@@ -36,6 +36,7 @@
 
 .mukou_motion {
     animation: damage 0.5s 3;
+    pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
     25% {
@@ -77,6 +78,19 @@
 }
 
 .syouri {
+    width: 500px;
+    height: 300px;
+    background-color: rgb(10, 4, 49);
+    cursor: pointer;
+    /* margin-bottom: 48px; */
+    
+    user-select: none; /* CSS3 */
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Safari、Chromeなど */
+    -ms-user-select: none; /* IE10かららしい */
+}
+
+.end {
     width: 500px;
     height: 300px;
     background-color: rgb(10, 4, 49);

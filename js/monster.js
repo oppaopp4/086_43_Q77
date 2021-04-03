@@ -51,20 +51,27 @@ class Monster {
                     comment.innerHTML += "戦闘に勝利した！";
                     if (maou.length === 1) {
                         const monsters = document.getElementById('monsters');
-                        const syouri = document.createElement('img');
-                        syouri.src = "img/エンディング.png";
-                        syouri.className = "syouri";
-                        monsters.appendChild(syouri);
-                        
+                        const end = document.createElement('img');
+                        end.src = "img/エンディング.png";
+                        end.className = "end";
+                        monsters.appendChild(end);
+
                         comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
                     } else {
-                        const monsters = document.getElementById('monsters');
+                        ClearMons();
                         const syouri = document.createElement('img');
                         syouri.src = "img/ダンジョン.png";
                         syouri.className = "syouri";
-                        monsters.appendChild(syouri);
+                        syouri.classList.add("mukou_motion");
+                        setTimeout(function () {
+                            // ～何かの処理～
+                            syouri.classList.remove("mukou_motion");
+                        }, 1500);
 
+                        monsters.appendChild(syouri);
                         comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
+
+                        syouri.addEventListener('click', Rensen);
                     }
                 }
                 // console.log(sitai.length);
@@ -78,7 +85,7 @@ class Monster {
 
         let sitai = document.getElementsByClassName('nodisp');// 死体クラス追加
 
-        let r = Math.floor(Math.random() * 4);
+        let r = Math.floor(Math.random() * 2);
         if (this.name === '魔王' && sitai.length !== 4) { // 魔王無効時
             this.ref.classList.add("mukou_motion");
         } else if (r == 0) {
