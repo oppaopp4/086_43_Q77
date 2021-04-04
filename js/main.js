@@ -1,3 +1,57 @@
+class Player {
+  constructor(name, hp) {
+    this.name = name;
+    this.hp = hp;
+
+    this.damage_point = 0;
+    this.alive = true;
+
+    this.Hangeki();
+  }
+
+  Hangeki() {
+
+    let comment = document.getElementById('comment');
+    let monsters = document.getElementById('monsters');
+    let child_nodes_count = monsters.childElementCount;
+
+    if (child_nodes_count > 0) {
+      
+    
+    monsters.addEventListener('click', () => {
+
+      console.log(this.name + ":hp" + this.hp);
+
+      this.damage_point = Math.floor(Math.random() * 5) + 1;
+      this.damage(this.damage_point);
+      // comment.innerHTML += this.name + "は" + this.damage_point + "のダメージをうけた</br>";
+    });
+
+    comment.addEventListener('animationend', () => {
+      comment.classList.remove("damage_motion");
+      //     this.ref.classList.remove("kaisin_motion");
+      //     // this.ref.classList.remove("mukou_motion");// 無効モーション追加
+
+      if (!this.alive) {
+        comment.innerHTML += this.name + "は死んでしまった</br>";
+
+      }
+    });
+  }
+  }
+
+  damage(damage) {
+
+    this.hp -= damage;
+    if (this.hp <= 0) this.alive = false;
+        comment.innerHTML += this.name + "は " + damage + " のダメージをうけた<br>";
+
+        console.log(this.name + ":" + this.hp);
+  }
+}
+
+Start();
+
 const btn = document.getElementById('btn');
 btn.addEventListener('click', saiyomikomi);
 const btn2 = document.getElementById('btn2');
@@ -10,6 +64,21 @@ const enemies = [
   { name: "ゴーレム", hp: 40 },
   { name: "ドラゴン", hp: 50 },
 ];
+
+function Start() {
+  const syuzinkou = [
+    {name: "もょもと", hp:30},
+    {name: "アベル", hp:50},
+    {name: "N島", hp:100},
+  ];
+  let n = Math.floor(Math.random() * syuzinkou.length);
+  const yuusya = new Player(syuzinkou[n].name, syuzinkou[n].hp);
+
+  let comment = document.getElementById('comment');
+  comment.innerHTML = yuusya.name + "(HP:" + yuusya.hp +")" + "は魔王を倒すべく進む";
+  console.log(yuusya);
+  
+}
 
 
 function FirstBattle() {
