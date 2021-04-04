@@ -50,7 +50,12 @@ class Monster {
                 if (renda.length === sitai.length) {
                     comment.innerHTML += "戦闘に勝利した！";
                     if (maou.length === 1) {
-                        Ending();
+                        comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
+                        Ending(1);
+                        setTimeout(function () {
+                            // ～何かの処理～
+                            Ending(2);
+                          }, 8000);
                     } else {
                         BattleEnd();
                     }
