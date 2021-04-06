@@ -90,7 +90,7 @@ class Monster {
 
         this.hp -= damage;
         if (this.hp <= 0) this.alive = false;
-        comment.innerHTML += this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！<br>";
+        comment.innerHTML += this.name + "に " + damage + " ポイントの<br>ダメージをあたえた！";
 
         console.log(this.name + ":" + this.hp);
     }

@@ -1,9 +1,9 @@
 let p = Start();
 
-const btn = document.getElementById('btn');
-btn.addEventListener('click', saiyomikomi);
-const btn2 = document.getElementById('btn2');
-btn2.addEventListener('click', FirstBattle);
+const saiyomikomi_btn = document.getElementById('saiyomikomi_btn');
+saiyomikomi_btn.addEventListener('click', Reload);
+const battle_btn = document.getElementById('battle_btn');
+battle_btn.addEventListener('click', FirstBattle);
 
 const enemies = [
   { name: "スライム", hp: 10 },
@@ -54,7 +54,7 @@ function LastBattle() {
   return enemy;
 }
 
-function saiyomikomi() {
+function Reload() {
   window.location.reload();
 }
 
@@ -62,13 +62,13 @@ function saiyomikomi() {
 function GetRedio() { // ラジオボタン
   let target = document.getElementById("target");
   let s = target.hoge.value
-  console.log(s);
+  // console.log(s);
   return s;
 }
 
 function Rensen() {
   ClearMons();
-  Encounter('a');
+  Encounter('random');
 }
 
 function ClearMons() {
@@ -84,11 +84,11 @@ function ClearSetu() {
 }
 
 function Encounter(x) {
-  // console.log(x);
+  console.log(x);
   let ninzuu = 0;
-  if (x === 'a') ninzuu = Math.floor(Math.random() * 6) + 1;
-  if (x === 'b') ninzuu = Math.floor(Math.random() * 5) + 1;
-  if (x === 'c') ninzuu = 6;
+  if (x === 'random') ninzuu = Math.floor(Math.random() * 6) + 1;
+  if (x === 'absolutely_zako') ninzuu = Math.floor(Math.random() * 5) + 1;
+  if (x === 'absolutely_maou') ninzuu = 6;
   // ninzuu = 6; // 魔王戦強制フラグ
 
   let enemy_list = [];
