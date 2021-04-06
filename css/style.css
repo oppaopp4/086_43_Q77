@@ -37,7 +37,7 @@
 }
 
 .mukou_motion {
-    animation: damage 0.5s 3;
+    animation: damage 0.3s 3;
     pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
@@ -160,4 +160,8 @@
 
 #btn3 {
     cursor: pointer;
+}
+
+.noclick {
+    pointer-events: none;
 }

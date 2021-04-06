@@ -30,9 +30,9 @@ class Monster {
             // 魔王戦のダメージ調整
             if (this.name === '魔王' && sitai.length !== 4) {
                 this.damage(this.damage_point * 0);
-                comment.innerHTML = "取り巻きに攻撃を阻まれた！</br>全然効いてない！";
+                comment.innerHTML = "取り巻きに攻撃を阻まれた！<br>全然効いてない！";
             } else {
-                this.ref.classList.add("damage_motion");
+                // this.ref.classList.add("damage_motion");
                 this.damage_point = Math.floor(Math.random() * 5) + 1;
                 this.damage(this.damage_point);
             }
@@ -45,18 +45,28 @@ class Monster {
 
             if (!this.alive) {
                 this.ref.classList.add("nodisp");
-                comment.innerHTML += this.name + "をやっつけた！</br>";
+                comment.innerHTML += this.name + "をやっつけた！<br>";
                 // 勝利時コメントを追加
                 if (renda.length === sitai.length) {
                     comment.innerHTML += "戦闘に勝利した！";
                     if (maou.length === 1) {
-                        Ending();
+                        comment.innerHTML += "<br>世界に平和が訪れた☆";// 魔王戦終了時
+                        Ending(1);
+                        setTimeout(function () {
+                            // ～何かの処理～
+                            Ending(2);
+                          }, 8000);
                     } else {
                         BattleEnd();
                     }
                 }
                 // console.log(sitai.length);
                 // console.log(renda.length);
+            }else{
+                let n = Math.floor(Math.random() * 5) + 1;
+                if(this.name === '魔王') n *= 2;
+                p.damage(this.name, n);
+
             }
         });
     }
@@ -70,7 +80,7 @@ class Monster {
         if (this.name === '魔王' && sitai.length !== 4) { // 魔王無効時
             this.ref.classList.add("mukou_motion");
         } else if (r == 0) {
-            comment.innerHTML += "会心の一撃！！</br>";
+            comment.innerHTML += "会心の一撃！！<br>";
             damage *= 10;
             this.ref.classList.add("kaisin_motion");
         } else {
