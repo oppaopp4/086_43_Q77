@@ -158,10 +158,22 @@
     -ms-user-select: none; /* IE10かららしい */
 }
 
-#btn3 {
+/* #btn3 {
     cursor: pointer;
-}
+} */
 
 .noclick {
     pointer-events: none;
+}
+
+.inline {
+    background-color: #eee;
+    width: 100px;
+    align-items: flex-start;
+    /* margin-top: 50px; */
+    padding-left: 12px;
+    border: solid 3px #6089e7;
+    border-radius: 10px;
+    text-align: left;
+    margin: 8px auto 8px 8px;
 }

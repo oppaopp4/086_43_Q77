@@ -7,24 +7,32 @@ class Player {
     this.alive = true;
     this.comment = null;
     this.content = null;
-
+    
     this.Hangeki();
+    this.Status();
+  }
+  
+  Status() {
+    this.status = document.getElementById('hero');
+    if(this.hp <= 0) this.hp = 0;
+    this.status.innerHTML = this.name + "<br>HP: " + this.hp;
   }
 
   Hangeki() {
 
     this.comment = document.getElementById('comment');
-
+    
     this.content = document.getElementById('commentbox');
     this.content.addEventListener('animationend', () => {
       this.content.classList.remove("damage_motion");
     });
   }
-
+  
   damage(name, point) {
     this.content.classList.add("damage_motion");
     this.hp -= point;
     console.log(this.name + ": " + this.hp);
+    this.Status();
 
     // this.comment.innerHTML += "<br>";
     this.comment.innerHTML += "<br>" + name + "の反撃";

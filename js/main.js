@@ -1,9 +1,6 @@
 let p = Start();
+Btn_sousa();
 
-const saiyomikomi_btn = document.getElementById('saiyomikomi_btn');
-saiyomikomi_btn.addEventListener('click', Reload);
-const battle_btn = document.getElementById('battle_btn');
-battle_btn.addEventListener('click', FirstBattle);
 
 const enemies = [
   { name: "スライム", hp: 10 },
@@ -15,19 +12,25 @@ const enemies = [
 
 function Start() {
   const syuzinkou = [
-    {name: "もょもと", hp:30},
-    {name: "アベル", hp:50},
-    {name: "N島", hp:100},
+    { name: "もょもと", hp: 30 },
+    { name: "アベル", hp: 50 },
+    { name: "N島", hp: 100 },
   ];
   let n = Math.floor(Math.random() * syuzinkou.length);
   const yuusya = new Player(syuzinkou[n].name, syuzinkou[n].hp);
 
   let comment = document.getElementById('comment');
-  comment.innerHTML = yuusya.name + "(HP:" + yuusya.hp +")" + "は魔王を倒すべく進む";
+  comment.innerHTML = yuusya.name + "(HP:" + yuusya.hp + ")" + "は魔王を倒すべく進む";
   console.log(yuusya);
   return yuusya;
 }
 
+function Btn_sousa() {
+  const saiyomikomi_btn = document.getElementById('saiyomikomi_btn');
+  saiyomikomi_btn.addEventListener('click', Reload);
+  const battle_btn = document.getElementById('battle_btn');
+  battle_btn.addEventListener('click', FirstBattle);
+}
 
 function FirstBattle() {
   let nyuuryokuti = GetRedio();
@@ -147,8 +150,8 @@ function BattleEnd() {
   monsters.appendChild(syouri);
   fadeIn(syouri, 1500);
   setTimeout(function () {
-      // ～何かの処理～
-      syouri.addEventListener('click', Rensen);
+    // ～何かの処理～
+    syouri.addEventListener('click', Rensen);
   }, 1500);
 
   comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
