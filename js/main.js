@@ -154,17 +154,24 @@ function BattleEnd() {
   comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
 }
 
-function Ending() {
+function Ending(n) {
+  ClearMons();
   const monsters = document.getElementById('monsters');
   const end = document.createElement('img');
+
+  let kome = ["",
+    "エンディング",
+    "終わり",
+  ];
   // end.id = "end1";
-  end.src = "img/エンディング.png";
+  end.src = "img/エンディング" + n + ".png";
   end.className = "end";
   monsters.appendChild(end);
   fadeIn(end, 1500);
   setTimeout(function () {
-      // ～何かの処理～
-      fadeOut(end, 5000);
-  }, 1500);
-  comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
+    // ～何かの処理～
+    fadeOut(end, 3500);
+    comment.innerHTML = kome[n];
+  }, 3000);
+  // comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
 }
