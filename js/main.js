@@ -1,7 +1,6 @@
-const btn = document.getElementById('btn');
-btn.addEventListener('click', saiyomikomi);
-const btn2 = document.getElementById('btn2');
-btn2.addEventListener('click', FirstBattle);
+let p = Start();
+Btn_sousa();
+
 
 const enemies = [
   { name: "スライム", hp: 10 },
@@ -11,6 +10,27 @@ const enemies = [
   { name: "ドラゴン", hp: 50 },
 ];
 
+function Start() {
+  const syuzinkou = [
+    { name: "もょもと", hp: 30 },
+    { name: "アベル", hp: 50 },
+    { name: "N島", hp: 100 },
+  ];
+  let n = Math.floor(Math.random() * syuzinkou.length);
+  const yuusya = new Player(syuzinkou[n].name, syuzinkou[n].hp);
+
+  let comment = document.getElementById('comment');
+  comment.innerHTML = yuusya.name + "(HP:" + yuusya.hp + ")" + "は魔王を倒すべく進む";
+  console.log(yuusya);
+  return yuusya;
+}
+
+function Btn_sousa() {
+  const saiyomikomi_btn = document.getElementById('saiyomikomi_btn');
+  saiyomikomi_btn.addEventListener('click', Reload);
+  const battle_btn = document.getElementById('battle_btn');
+  battle_btn.addEventListener('click', FirstBattle);
+}
 
 function FirstBattle() {
   let nyuuryokuti = GetRedio();
@@ -37,7 +57,7 @@ function LastBattle() {
   return enemy;
 }
 
-function saiyomikomi() {
+function Reload() {
   window.location.reload();
 }
 
@@ -45,13 +65,13 @@ function saiyomikomi() {
 function GetRedio() { // ラジオボタン
   let target = document.getElementById("target");
   let s = target.hoge.value
-  console.log(s);
+  // console.log(s);
   return s;
 }
 
 function Rensen() {
   ClearMons();
-  Encounter('a');
+  Encounter('random');
 }
 
 function ClearMons() {
@@ -67,11 +87,11 @@ function ClearSetu() {
 }
 
 function Encounter(x) {
-  // console.log(x);
+  console.log(x);
   let ninzuu = 0;
-  if (x === 'a') ninzuu = Math.floor(Math.random() * 6) + 1;
-  if (x === 'b') ninzuu = Math.floor(Math.random() * 5) + 1;
-  if (x === 'c') ninzuu = 6;
+  if (x === 'random') ninzuu = Math.floor(Math.random() * 6) + 1;
+  if (x === 'absolutely_zako') ninzuu = Math.floor(Math.random() * 5) + 1;
+  if (x === 'absolutely_maou') ninzuu = 6;
   // ninzuu = 6; // 魔王戦強制フラグ
 
   let enemy_list = [];
@@ -130,24 +150,31 @@ function BattleEnd() {
   monsters.appendChild(syouri);
   fadeIn(syouri, 1500);
   setTimeout(function () {
-      // ～何かの処理～
-      syouri.addEventListener('click', Rensen);
+    // ～何かの処理～
+    syouri.addEventListener('click', Rensen);
   }, 1500);
 
   comment.innerHTML += "</br>俺たちの戦いはこれからだ…！";// 通常戦闘時
 }
 
-function Ending() {
+function Ending(n) {
+  ClearMons();
   const monsters = document.getElementById('monsters');
   const end = document.createElement('img');
+
+  let kome = ["",
+    "エンディング",
+    "終わり",
+  ];
   // end.id = "end1";
-  end.src = "img/エンディング.png";
+  end.src = "img/エンディング" + n + ".png";
   end.className = "end";
   monsters.appendChild(end);
   fadeIn(end, 1500);
   setTimeout(function () {
-      // ～何かの処理～
-      fadeOut(end, 5000);
-  }, 1500);
-  comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
+    // ～何かの処理～
+    fadeOut(end, 3500);
+    comment.innerHTML = kome[n];
+  }, 3000);
+  // comment.innerHTML += "</br>世界に平和が訪れた☆";// 魔王戦終了時
 }

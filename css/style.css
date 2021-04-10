@@ -37,7 +37,7 @@
 }
 
 .mukou_motion {
-    animation: damage 0.5s 3;
+    animation: damage 0.3s 3;
     pointer-events: none; /* クリック無効を追加 */
 }
 @keyframes damage {
@@ -57,6 +57,8 @@
 
 #monsters {
     height: 255px;
+    white-space: nowrap;
+    /* display: inline-block; */
 }
 
 /* img {
@@ -71,7 +73,6 @@
     width: 500px;
     height: 300px;
     background-color: rgb(10, 4, 49);
-    /* margin-bottom: 48px; */
     cursor: pointer;
     user-select: none; /* CSS3 */
     -moz-user-select: none; /* Firefox */
@@ -84,8 +85,6 @@
     height: 300px;
     background-color: rgb(10, 4, 49);
     cursor: pointer;
-    /* margin-bottom: 48px; */
-    
     user-select: none; /* CSS3 */
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Safari、Chromeなど */
@@ -96,8 +95,6 @@
     width: 500px;
     height: 300px;
     background-color: rgb(10, 4, 49);
-    /* margin-bottom: 48px; */
-    
     user-select: none; /* CSS3 */
     -moz-user-select: none; /* Firefox */
     -webkit-user-select: none; /* Safari、Chromeなど */
@@ -149,15 +146,18 @@
     -ms-user-select: none; /* IE10かららしい */
 }
 
-.junbi {
-    width: 1px;
-    height: 1px;
-    user-select: none; /* CSS3 */
-    -moz-user-select: none; /* Firefox */
-    -webkit-user-select: none; /* Safari、Chromeなど */
-    -ms-user-select: none; /* IE10かららしい */
+.noclick {
+    pointer-events: none;
 }
 
-#btn3 {
-    cursor: pointer;
+.inline {
+    background-color: #eee;
+    width: 100px;
+    align-items: flex-start;
+    /* margin-top: 50px; */
+    padding-left: 12px;
+    border: solid 3px #6089e7;
+    border-radius: 10px;
+    text-align: left;
+    margin: 8px auto 8px 8px;
 }
